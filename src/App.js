@@ -47,7 +47,7 @@ function App() {
                 <h1>Some error has occurred ${orderError}</h1>
             }
             {isOrdersLoading
-                ? <div style={{display:'flex', justifyContent:'center', marginTop:50}}><Loader/></div>
+                ? <Loader/>
                 : <OrderList detail={setModal} detailOrder={detailOrder} remove={removeOrder} orders={orders} title="Shipments list"/>
             }
 
