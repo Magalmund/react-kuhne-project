@@ -4,11 +4,13 @@ import InputCustom from "../input/InputCustom";
 import ButtonCustom from "../button/ButtonCustom";
 import {useForm} from "react-hook-form";
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import {useDispatch} from "react-redux";
+import {editOrderAction} from "../../../redux/actions/orderAction";
 
-const ModalCustom = ({title, visible, setVisible, order, setOrder, editOrder}) => {
+const ModalCustom = ({visible, setVisible, order}) => {
+    const dispatch = useDispatch()
     const [isEditActive, setIsEditActive] = useState(true);
     const {register, handleSubmit, reset} = useForm({
         defaultValues: order
@@ -24,7 +26,7 @@ const ModalCustom = ({title, visible, setVisible, order, setOrder, editOrder}) =
 
     const saveButton = (order) => {
         setIsEditActive(true);
-        editOrder(order)
+        dispatch(editOrderAction(order))
         setVisible(false);
     }
     const handleClose = () => setVisible(false);
